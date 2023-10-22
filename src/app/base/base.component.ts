@@ -1,30 +1,22 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-
 export class BaseComponent {
+  constructor(private spinner: NgxSpinnerService) { }
 
-constructor(private spinner: NgxSpinnerService) {}
+  showSpinner(spinnerNameType: SpinnerType) {
+    this.spinner.show(spinnerNameType);
 
-  showSpinner(spinnerNameTye:SpinnerType){
-    this.spinner.show(spinnerNameTye);
-
-    setTimeout(() => {
-      this.hideSpinner(spinnerNameTye)}, 3000);
-
+    //setTimeout(() => this.hideSpinner(spinnerNameType), 1000);
   }
 
-  hideSpinner(spinnerNameTye:SpinnerType){
-    this.spinner.hide(spinnerNameTye);
+  hideSpinner(spinnerNameType: SpinnerType) {
+    this.spinner.hide(spinnerNameType);
   }
-
 }
 
-
-
-export enum SpinnerType{
-  BallAtom="s1",
-  BallScaleMultiple="s2",
-  BallSpinClockwiseFadeRotating="s3"
+export enum SpinnerType {
+  BallAtom = "s1",
+  BallScaleMultiple = "s2",
+  BallSpinClockwiseFadeRotating = "s3"
 }
-
